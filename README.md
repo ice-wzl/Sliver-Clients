@@ -1,6 +1,6 @@
 # sliver-clients
 ## Overview 
-- In this repo are mutiple custom Sliver clients that extend the current Sliver client.
+- In this repo are multiple custom Sliver clients that extend the current Sliver client.
 - While the default Sliver client is very powerful, it does not contains a few required features. This repo attempts to solve those issues.
 ## Operator config
 - These sliver clients (just like the main `sliver-client` require an operator config in order to connection
