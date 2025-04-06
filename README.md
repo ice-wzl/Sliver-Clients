@@ -101,10 +101,26 @@ PPID        PID         USER             COMMAND
 ## What the watchers look like while both running 
 ![image](https://github.com/user-attachments/assets/ec6c8675-ee3c-44d4-b3c7-2ec0aad2950a)
 
+## Linux Survey
+- This sliver client will automate the enumeration of a Linux host. This has been tested on Ubuntu hosts, but should work on all Linux based system.
+- The survey script will pull a variety of information and files off the target host. In addition it will rebuild the targets directory structure locally.
+    - For example the script will download users `.bash_history` file. If the script finds the history file at `/home/user/.bash_history` this will be rebuilt locally in your pwd.
+- Build the script by navigating to `survey/linux` and running `go build` 
+- This script requires a sliver client config to run, just like the watcher scripts.
+````
+./sliver-clients -h
+Usage of ./sliver-clients:
+  -config string
+        path to sliver client config file
+
+./sliver-clients -config /opt/sliver-clients/default-local_127.0.0.1.cfg
+````
+
 # Coming Soon
-- Linux Survey 
 - Windows Survey
 - Custom downloader client
+## TODO
+- Add bin checker at the top of the linux survey and determine what exists and where.
 
 
 
