@@ -1,6 +1,3 @@
-# This workflow will build a golang project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
-
 name: Go
 
 on:
@@ -10,7 +7,6 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
@@ -22,19 +18,19 @@ jobs:
         go-version: '1.23'
 
     - name: build_netstat
-      run: GOARCH=amd64 GOOS=linux go build watchers/netstat
+      run: GOARCH=amd64 GOOS=linux go build -o watchers/netstat/watchers_netstat watchers/netstat
 
     - name: build_ps
-      run: GOARCH=amd64 GOOS=linux go build watchers/ps
+      run: GOARCH=amd64 GOOS=linux go build -o watchers/ps/watchers_ps watchers/ps
 
     - name: build_lin_survey
-      run: GOARCH=amd64 GOOS=linux go build survey/linux
+      run: GOARCH=amd64 GOOS=linux go build -o survey/linux/survey_linux survey/linux
 
-    - name: upload_artifacts
+    - name: Upload build artifacts
       uses: actions/upload-artifact@v3
       with:
         name: go-build-artifacts
         path: |
-          watchers/netstat/watcher_netstat
-          watchers/ps/watcher_ps
-          linux/survey/survey_linux
+          watchers/netstat/watchers_netstat
+          watchers/ps/watchers_ps
+          survey/linux/survey_linux
