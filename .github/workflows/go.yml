@@ -22,16 +22,16 @@ jobs:
         go-version: '1.23'
 
     - name: build_netstat
-      run: go build watchers/netstat
+      run: GOARCH=amd64 GOOS=linux go build watchers/netstat
 
     - name: build_ps
-      run: go build watchers/ps
+      run: GOARCH=amd64 GOOS=linux go build watchers/ps
 
     - name: build_lin_survey
-      run: go build survey/linux
+      run: GOARCH=amd64 GOOS=linux go build survey/linux
 
     - name: upload_artifacts
-      uses: actions/upload-artifacts@v3
+      uses: actions/upload-artifact@v3
       with:
         name: go-build-artifacts
         path: |
